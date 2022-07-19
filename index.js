@@ -29,12 +29,12 @@ const check_token = (req, res, next) => {
 
 // Listen for al methods in all paths
 app.all("/*", check_token, async (req, res) => {
-  
+
   // http://localhost:8080/open-weather/data/2.5/onecall?lat=1&lon=1
   //                      /  api_name  /         api_path          /
 
-  const api_name = req.url.split("/")[1]; // -- open-weather
-  const api_path = req.url.split("/").slice(2).join("/"); // -- /data/2.5/onecall?lat=1&lon=1
+  const api_name = req.url.split("/")[1]; // open-weather
+  const api_path = req.url.split("/").slice(2).join("/"); // /data/2.5/onecall?lat=1&lon=1
 
   // Before doing anything check if the API is in the apis.json file
   if (!Object.keys(apis).includes(api_name)) {
@@ -43,10 +43,10 @@ app.all("/*", check_token, async (req, res) => {
   }
 
   // Get the api URL from the apis object and append the secret to the query params or the headers
-  const api_url = apis[api_name].url + api_path; // -- https://api.openweathermap.org/data/2.5/onecall?lat=1&lon=1
+  const api_url = apis[api_name].url + api_path; // https://api.openweathermap.org/data/2.5/onecall?lat=1&lon=1
   const url = new URL(api_url);
-  const api_secret = process.env[apis[api_name].secret]; // -- SECRET 🔑
-  url.searchParams.set(apis[api_name].meta, api_secret); // -- https://api.openweathermap.org/data/2.5/onecall?lat=1&lon=1&appid=SECRET ( now it has the secret )
+  const api_secret = process.env[apis[api_name].secret]; // SECRET 🔑
+  url.searchParams.set(apis[api_name].meta, api_secret); // https://api.openweathermap.org/data/2.5/onecall?lat=1&lon=1&appid=SECRET ( now it has the secret )
 
   log(`API -> ${api_name} | METHOD -> ${req.method} | URL -> ${api_path}`);
 
