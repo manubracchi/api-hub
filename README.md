@@ -2,22 +2,22 @@
 
 The console is dependent on many APIs, and since we can't store all those secrets securely on the client, we'll use a "parent" API that makes requests to other APIs using their corresponding secrets and validating the token provided by Auth0 or Firebase Auth
 
-## How it works 🤔
-- The frontend API does a request, in this request is specified the name of the api, and the path to work on. (e.g. http://localhost:8080/open-weather/data/2.5/onecall?lat=1&lon=1 ).
-- The first part of the path is the api name ( open-weather ) and the rest is the api path to request.
+### How it works 🤔
+- The frontend API does a request, in this request is specified the name of the api, and the path to work on. (e.g. http://localhost:8080/open-weather/data/2.5/onecall?lat=1&lon=1).
+- The first part of the path is the api name (open-weather) and the rest is the api path to request.
 - The backend ( this app ) validates the auth token provided by Auth0 and also limits the rate of requests to prevent abuse even for logged users.
-- Then does a identical request BUT including the API key ( in the URL or in the headers ), body and all the other headers that aren't auth are sent as they are.
+- Then does a identical request BUT including the API key (from the env variable with the name provided in apis.json), body, params, and all the headers that aren't auth are sent as they are.
 - The request response is sent to the frontend.
 
 Check [this Whimsical link](https://whimsical.com/Cd5GytK42BAjnKvvRBo4JN)
 
 
-## How to configure it
+### How to configure it
 You can add all APIs you want to the *apis.json* file respecting the following pattern
 ```jsx
 {
   "open-weather": {                           // API name
-    "type": "query",                          // Type of the 
+    "type": "query",                          // Type of the API key ( header or query )
     "meta": "appid",                          // API key param / header name
     "secret": "OWEATHER_KEY",                 // Name of the env variable containing the secret
     "url": "https://api.openweathermap.org/", // URL of the API
@@ -25,8 +25,7 @@ You can add all APIs you want to the *apis.json* file respecting the following p
   }
 }
 ```
-
-## Local setup
+### Local setup
 ```bash
 yarn # or npm i
 
@@ -38,7 +37,7 @@ yarn start # or npm start
 ```
 
 
-## Docker setup
+### Docker setup
 ```bash
 # Create a docker container
 docker build youruser/api-hub .
