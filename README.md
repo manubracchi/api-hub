@@ -39,9 +39,9 @@ yarn start # or npm start
 
 ### Docker setup
 ```bash
-# Create a docker container
+# Create a docker image
 docker build youruser/api-hub .
 
-# Run the created container
+# Run the created image
 docker run -p 8080:8080 youruser/api-hub
 ```
