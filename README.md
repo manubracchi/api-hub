@@ -13,7 +13,7 @@ Check [this Whimsical link](https://whimsical.com/Cd5GytK42BAjnKvvRBo4JN)
 
 
 ## How to configure it
-You can add all APIs you want to the apis.json file respecting the following pattern
+You can add all APIs you want to the *apis.json* file respecting the following pattern
 ```jsx
 {
   "open-weather": {                           // API name
