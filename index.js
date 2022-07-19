@@ -38,7 +38,7 @@ app.all("/*", async (req, res) => {
   const api_url = apis[api_name].url + api_path; // -- https://api.openweathermap.org/data/2.5/onecall?lat=1&lon=1
   const url = new URL(api_url);
   const api_secret = process.env[apis[api_name].secret]; // -- SECRET 🔑
-  url.searchParams.set(apis[api_name].meta, api_secret); // -- https://api.openweathermap.org/data/2.5/onecall?lat=1&lon=1&appid=SECRET
+  url.searchParams.set(apis[api_name].meta, api_secret); // -- https://api.openweathermap.org/data/2.5/onecall?lat=1&lon=1&appid=SECRET ( now it has the secret )
 
   log(`API -> ${api_name} | METHOD -> ${req.method} | URL -> ${api_path}`);
 
