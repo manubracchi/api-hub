@@ -20,8 +20,16 @@ const log = (msg) => {
 // App
 const app = express();
 
+
+// Security middleware ( like check the Auth0 token )
+const check_token = (req, res, next) => {
+  next()
+}
+
+
 // Listen for al methods in all paths
-app.all("/*", async (req, res) => {
+app.all("/*", check_token, async (req, res) => {
+  
   // http://localhost:8080/open-weather/data/2.5/onecall?lat=1&lon=1
   //                      /  api_name  /         api_path          /
 
