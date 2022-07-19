@@ -29,7 +29,7 @@ You can add all APIs you want to the *apis.json* file respecting the following p
 ```bash
 yarn # or npm i
 
-# Dev mode with logs and .env file
+# Dev mode with logs and nodemon
 yarn dev # or npm run dev
 
 # Normal mode

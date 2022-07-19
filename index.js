@@ -4,7 +4,7 @@ require("dotenv").config();
 // Import dependencies
 const express = require("express");
 const axios = require("axios");
-const debug_enabled = process.env.DEBUG ?? true;
+const debug_enabled = process.env.DEBUG;
 const app = express();
 
 // Useful constants
