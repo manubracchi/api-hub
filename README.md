@@ -8,15 +8,18 @@ The console is dependent on many APIs, and since we can't store all those secret
 - The backend ( this app ) validates the auth token provided by Auth0 and also limits the rate of requests to prevent abuse even for logged users.
 - Then does a identical request BUT including the API key ( in the URL or in the headers ), body and all the other headers that aren't auth are sent as they are.
 - The request response is sent to the frontend.
+
 Check [this Whimsical link](https://whimsical.com/Cd5GytK42BAjnKvvRBo4JN)
+
+
 ## How to configure it
-You can add all APIs you want respecting the following format
+You can add all APIs you want to the apis.json file respecting the following pattern
 ```jsx
 {
-  "open-weather": {                          // API name
-    "type": "query",                         // Type of the 
-    "meta": "appid",                         // API key param / header name
-    "secret": "OWEATHER_KEY",                // Name of the env variable containing the secret
+  "open-weather": {                           // API name
+    "type": "query",                          // Type of the 
+    "meta": "appid",                          // API key param / header name
+    "secret": "OWEATHER_KEY",                 // Name of the env variable containing the secret
     "url": "https://api.openweathermap.org/", // URL of the API
     "allowed-methods": ["GET", "POST"],       // Allowed methods ( blank is all )
   }
