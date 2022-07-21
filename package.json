@@ -2,7 +2,12 @@
   "name": "api-hub",
   "version": "1.0.0",
   "main": "index.js",
+  "private": true,
   "license": "MIT",
+
+  "engines": {
+    "node": ">=14.0.0"
+  },
   "scripts": {
     "start": "node index.js",
     "dev": "LOGS=1 && nodemon index.js"
