@@ -12,17 +12,17 @@ Check [this Whimsical link](https://whimsical.com/Cd5GytK42BAjnKvvRBo4JN)
 
 ### How it works 🤔
 
-- The frontend API does a request, in this request is specified the name of the api, and the path to work on. (e.g. http://localhost:8080/open-weather/data/2.5/onecall?lat=1&lon=1).
-- The first part of the path is the api name (open-weather) and the rest is the api path to request.
+- The frontend does a request, in this request is included the name of the api, the path to work on (e.g. http://localhost:8080/open-weather/data/2.5/onecall?lat=1&lon=1), and the JWT provided by Auth0 (in one header).
+- The first part of the request path is the api name (open-weather) and the rest is the api path to request.
 - The backend ( this app ) validates the auth token provided by Auth0 and also limits the rate of requests to prevent abuse even for logged users.
 - Then does a identical request BUT including the API key (from the env variable with the name provided in apis.json), body, params, and all the headers that aren't auth are sent as they are.
-- The request response is sent to the frontend.
+- Then the request response is sent to the frontend.
 
 <br />
 
 ### How to configure it
 
-You can add all APIs you want to the _apis.json_ file respecting the following pattern
+You can add all APIs you want to the **apis.json** file respecting the following pattern
 
 ```jsx
 {
@@ -69,4 +69,4 @@ docker run -p 8080:8080 youruser/api-hub
 - Send request headers (client -> api).
 - If key type is header send api key as header.
 - Validate Auth0 token [(see how to obtain the token).](https://auth0.com/docs/secure/tokens/access-tokens/get-access-tokens)
-- Program the method filer (see apis.json allowed-methods parameter).
+- Program the method filter (see apis.json allowed-methods parameter).
